@@ -13,7 +13,7 @@ render:function(){
             <IndexLink to="/" activeClassName="active" activeStyle={{fontWeight:'bold'}}>Timer</IndexLink>
           </li>
           <li>
-            <IndexLink to='/' activeClassName="active" activeStyle={{fontWeight:'bold'}}>Countdown</IndexLink>
+            <IndexLink to='/countdown' activeClassName="active" activeStyle={{fontWeight:'bold'}}>Countdown</IndexLink>
           </li>
         </ul>
       </div>
