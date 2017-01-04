@@ -24,6 +24,7 @@ describe ('Countdown', () => {
         done();
       },1001);
     });
+
     it ('should never set count to less than zero', (done)=> {
       var countdown = TestUtils.renderIntoDocument(<Countdown/>);
       countdown.handleSetCountdown(1);
@@ -32,6 +33,28 @@ describe ('Countdown', () => {
         expect(countdown.state.count).toBe(0);
         done();
       },3001);
+    });
+
+    it ('should pause coundown on paused status', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+      countdown.handleSetCountdown(3);
+      countdown.setState({countdownStatus:'paused'})
+      setTimeout(()=> {
+        expect(countdown.state.count).toBe(3);
+        expect(countdown.state.countdownStatus).toBe('paused');
+        done();
+      },1001);
+    });
+
+    it ('should restet coundown on stopped status', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+      countdown.handleSetCountdown(3);
+      countdown.setState({countdownStatus:'stopped'})
+      setTimeout(()=> {
+        expect(countdown.state.count).toBe(0);
+        expect(countdown.state.countdownStatus).toBe('stopped');
+        done();
+      },1001);
     });
 
   });
